@@ -18,10 +18,20 @@ test('Register User', async ({ page }) => {
   await page.locator("//input[@formcontrolname='required']").click();
   await page.locator("//input[@type='submit']").click();
   await page.getByRole('button', { name: 'Login' }).click();
-  await page.pause();
+  
+ 
 
 
 
 });
 
+test('Login User', async({page})=>{
+  
+await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
+  await expect(page).toHaveTitle("Let's Shop");
+  page.locator("//input[@id='userEmail']").fill("saurabh.deshp99@gmail.com");
+  page.locator("//input[@id='userPassword']").fill("Saurabh@123");
+  page.locator("//input[@type='submit']").click();
+}
+);
 
