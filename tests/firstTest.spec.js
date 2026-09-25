@@ -27,11 +27,38 @@ test('Register User', async ({ page }) => {
 
 test('Login User', async({page})=>{
   
-await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
+  await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
+  const productname = "iphone 13 pro";
   await expect(page).toHaveTitle("Let's Shop");
-  page.locator("//input[@id='userEmail']").fill("saurabh.deshp99@gmail.com");
-  page.locator("//input[@id='userPassword']").fill("Saurabh@123");
-  page.locator("//input[@type='submit']").click();
+  await page.locator("//input[@id='userEmail']").fill("saurabhdeshp99@gmail.com");
+  await page.locator("//input[@id='userPassword']").fill("Saurabh@123");
+  await page.locator("//input[@type='submit']").click();
+
+  const products = page.locator("//div[@class='card-body']//b");
+
+  await page.locator("//div[@class='card-body']//b").first().waitFor();
+console.log(await products.allTextContents());
+
+for(let i=0;i<await products.count();i++)
+{
+  if(await products.nth(i).textContent()===productname)
+    {
+
+    await page.locator("//button[@class='btn w-10 rounded']").nth(i).click();
+  }
+
+}
+
+await page.locator("//button[@routerlink='/dashboard/cart']").click();
+
+await page.locator("//div[@class='cartSection']//h3").waitFor();
+
+await expect(page.locator("//div[@class='cartSection']//h3")).toHaveText(productname);
+
+
+page.pause();
+
+
 }
 );
 
