@@ -55,8 +55,17 @@ await page.locator("//div[@class='cartSection']//h3").waitFor();
 
 await expect(page.locator("//div[@class='cartSection']//h3")).toHaveText(productname);
 
+await page.getByRole("button", { name: "Checkout" }).click();
+
+await page.locator("//div[@aria-label='Product Added To Cart']").first().waitFor();
+
+await page.locator("//input[@placeholder='Select Country']").pressSequentially('ind');
+//await page.locator("//span[@class='ng-star-inserted']").nth(2).waitFor();
+await page.locator("//span[@class='ng-star-inserted']").nth(1).click();
+
 
 page.pause();
+
 
 
 }
