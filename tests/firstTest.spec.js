@@ -8,6 +8,7 @@ test('Register User', async ({ page }) => {
   await page.goto('https://eventhub.rahulshettyacademy.com/login');
   await page.locator('text=Register').click();
   await page.getByTestId('register-email').fill(email);
+   await page.getByTestId('register-email').dblclick();
   await page.locator('id=register-password').fill(password);
   await page.locator('id=register-password').fill(password);
   await page.getByRole('textbox', { name: 'Repeat your password' }).fill(password);
@@ -18,6 +19,7 @@ test('Register User', async ({ page }) => {
   await page.locator('css=input[placeholder="you@email.com"]').fill(email);
   await page.locator('css=input[placeholder="••••••"]').fill(password);
     await page.getByRole('button', { name: 'Sign In' }).click();
+   
 
 
   // you@email.com
