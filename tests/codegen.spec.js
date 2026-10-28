@@ -1,6 +1,6 @@
   import { test, expect } from '@playwright/test';
   
-  test('Register User', async ({ page }) => {
+  test('Test codegen', async ({ page }) => {
   await page.goto('https://eventhub.rahulshettyacademy.com/login');
   await page.getByText('RSA·QA Practice HubEventHub — Practice AppThe #1 QA Practice Hubfor Automation').click();
   await page.getByRole('textbox', { name: 'Email' }).fill('saurabhd4498@gmail.com');
